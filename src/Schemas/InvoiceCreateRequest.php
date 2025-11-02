@@ -12,6 +12,8 @@ class InvoiceCreateRequest
     public ?int $expire = null;
     /** @var array<string, string>|null */
     public ?array $custom_fields = null;
+	public ?string $service = null;
+	public ?string $email = null;
 
     /**
      * @param array<string, mixed> $data
@@ -26,6 +28,8 @@ class InvoiceCreateRequest
         $req->comment = isset($data['comment']) ? (string)$data['comment'] : null;
         $req->expire = isset($data['expire']) ? (int)$data['expire'] : null;
         $req->custom_fields = isset($data['custom_fields']) ? (array)$data['custom_fields'] : null;
+		$req->service = isset($data['service']) ? (string)$data['service'] : null;
+		$req->email = isset($data['email']) ? (string)$data['email'] : null;
         return $req;
     }
 
@@ -48,6 +52,12 @@ class InvoiceCreateRequest
         }
         if ($this->custom_fields !== null) {
             $out['custom_fields'] = $this->custom_fields;
+        }
+        if ($this->service !== null) {
+            $out['service'] = $this->service;
+        }
+        if ($this->email !== null) {
+            $out['email'] = $this->email;
         }
         return $out;
     }
