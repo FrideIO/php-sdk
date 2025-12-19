@@ -14,6 +14,8 @@ class InvoiceCreateRequest
     public ?array $custom_fields = null;
 	public ?string $service = null;
 	public ?string $email = null;
+	public ?string $success_url = null;
+	public ?string $fail_url = null;
 
     /**
      * @param array<string, mixed> $data
@@ -30,6 +32,8 @@ class InvoiceCreateRequest
         $req->custom_fields = isset($data['custom_fields']) ? (array)$data['custom_fields'] : null;
 		$req->service = isset($data['service']) ? (string)$data['service'] : null;
 		$req->email = isset($data['email']) ? (string)$data['email'] : null;
+		$req->success_url = isset($data['success_url']) ? (string)$data['success_url'] : null;
+		$req->fail_url = isset($data['fail_url']) ? (string)$data['fail_url'] : null;
         return $req;
     }
 
@@ -58,6 +62,12 @@ class InvoiceCreateRequest
         }
         if ($this->email !== null) {
             $out['email'] = $this->email;
+        }
+        if ($this->success_url !== null) {
+            $out['success_url'] = $this->success_url;
+        }
+        if ($this->fail_url !== null) {
+            $out['fail_url'] = $this->fail_url;
         }
         return $out;
     }
