@@ -1,6 +1,6 @@
 {
     "name": "fride/php-sdk",
-	"version": "1.0.3",
+	"version": "1.0.4",
     "description": "Fride PHP SDK (HTTP client without external deps, composer or plain require)",
     "type": "library",
     "license": "MIT",

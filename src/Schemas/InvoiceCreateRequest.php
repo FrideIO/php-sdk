@@ -16,6 +16,7 @@ class InvoiceCreateRequest
 	public ?string $email = null;
 	public ?string $success_url = null;
 	public ?string $fail_url = null;
+	public ?bool $autoAccept = null;
 
     /**
      * @param array<string, mixed> $data
@@ -34,6 +35,7 @@ class InvoiceCreateRequest
 		$req->email = isset($data['email']) ? (string)$data['email'] : null;
 		$req->success_url = isset($data['success_url']) ? (string)$data['success_url'] : null;
 		$req->fail_url = isset($data['fail_url']) ? (string)$data['fail_url'] : null;
+		$req->autoAccept = (isset($data['autoAccept']) && $data['autoAccept'] == true) ? true : null;
         return $req;
     }
 
@@ -68,6 +70,9 @@ class InvoiceCreateRequest
         }
         if ($this->fail_url !== null) {
             $out['fail_url'] = $this->fail_url;
+        }
+        if ($this->autoAccept !== null) {
+            $out['autoAccept'] = $this->autoAccept;
         }
         return $out;
     }

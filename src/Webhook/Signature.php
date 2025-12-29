@@ -13,7 +13,11 @@ class Signature
         }
 		
         ksort($hookArr);
-		
+
+        if (isset($hookArr['custom_fields'])) {
+            $hookArr['custom_fields'] = (object) $hookArr['custom_fields']; // Фикс особенности PHP. Пустой объект переделывает в массив по умолчанию
+        }
+
         $hookJsonSorted = json_encode($hookArr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		
         if ($hookJsonSorted === false) {
